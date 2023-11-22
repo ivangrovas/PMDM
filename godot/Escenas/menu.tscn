@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvgv68fou6hco"]
+[gd_scene load_steps=6 format=3 uid="uid://cvgv68fou6hco"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_r3kum"]
 [ext_resource type="FontFile" uid="uid://dloevfv7jc37l" path="res://Escenas/Arthemis.ttf" id="2_1gbj8"]
 [ext_resource type="Texture2D" uid="uid://6jusne3828u8" path="res://Escenas/matrix.jpg" id="3_hw7i2"]
+[ext_resource type="PackedScene" uid="uid://46f2dp271kyv" path="res://Escenas/menu_settings.tscn" id="4_h4n2w"]
 
 [sub_resource type="Theme" id="Theme_erb38"]
 
@@ -51,5 +52,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Exit"
 
+[node name="MenuSettings" parent="." instance=ExtResource("4_h4n2w")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
