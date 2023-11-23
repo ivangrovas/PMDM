@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://el2k07yotm6w"]
+
+[ext_resource type="Texture2D" uid="uid://b4hq2piaer5kc" path="res://Resources/Character/Idle/Idle-Sheet.png" id="1_04sr7"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_fcflc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_01j0h"]
+height = 44.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_fcflc")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_04sr7")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_01j0h")
