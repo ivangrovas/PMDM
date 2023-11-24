@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://el2k07yotm6w"]
+[gd_scene load_steps=20 format=3 uid="uid://el2k07yotm6w"]
 
 [ext_resource type="Texture2D" uid="uid://b4hq2piaer5kc" path="res://Resources/Character/Idle/Idle-Sheet.png" id="1_04sr7"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fcflc"]
@@ -147,7 +147,32 @@ _data = {
 "run": SubResource("Animation_t34cw")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4if76"]
+animation = &"neo"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eh3hr"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_owp8h"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_elpt3"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_4if76")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_eh3hr")
+blend_point_1/pos = -1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_owp8h")
+blend_point_2/pos = 1.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpsrk"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0hyj0"]
+states/Move/node = SubResource("AnimationNodeBlendSpace1D_elpt3")
+states/Move/position = Vector2(379, 100)
+states/Start/position = Vector2(162, 100)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_wpsrk")]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fcflc")
@@ -176,3 +201,4 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_0hyj0")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Move/blend_position = 0
