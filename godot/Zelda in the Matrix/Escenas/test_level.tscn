@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://db84nhoqk4w4f"]
+[gd_scene load_steps=6 format=3 uid="uid://db84nhoqk4w4f"]
 
 [ext_resource type="Texture2D" uid="uid://dvr2ys1t6uo2b" path="res://Resources/Assets/Tiles.png" id="1_k3ks3"]
 [ext_resource type="PackedScene" uid="uid://el2k07yotm6w" path="res://Escenas/player.tscn" id="2_6yduh"]
+[ext_resource type="Texture2D" uid="uid://d1p8y6rwh5du6" path="res://Resources/background.jpg" id="3_s0ceh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4q1r8"]
 texture = ExtResource("1_k3ks3")
@@ -1442,3 +1443,12 @@ process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(137, 144)
+scale = Vector2(0.723437, 0.616667)
+texture = ExtResource("3_s0ceh")
