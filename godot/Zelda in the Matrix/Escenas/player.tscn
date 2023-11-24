@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://el2k07yotm6w"]
+[gd_scene load_steps=15 format=3 uid="uid://el2k07yotm6w"]
 
 [ext_resource type="Texture2D" uid="uid://b4hq2piaer5kc" path="res://Resources/Character/Idle/Idle-Sheet.png" id="1_04sr7"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fcflc"]
+[ext_resource type="Texture2D" uid="uid://1wfhptob6523" path="res://Resources/Character/Run/Run-Sheet.png" id="3_dlgou"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iaaw5"]
 atlas = ExtResource("1_04sr7")
@@ -42,6 +43,21 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_01j0h"]
 radius = 11.0
 height = 48.0
+
+[sub_resource type="Animation" id="Animation_nsv5a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_06hvu"]
 resource_name = "neo"
@@ -84,25 +100,51 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_nsv5a"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_t34cw"]
+resource_name = "run"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [ExtResource("3_dlgou")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t3xai"]
 _data = {
 "RESET": SubResource("Animation_nsv5a"),
-"neo": SubResource("Animation_06hvu")
+"neo": SubResource("Animation_06hvu"),
+"run": SubResource("Animation_t34cw")
 }
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0hyj0"]
@@ -123,8 +165,8 @@ position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_01j0h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_04sr7")
-hframes = 4
+texture = ExtResource("3_dlgou")
+hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

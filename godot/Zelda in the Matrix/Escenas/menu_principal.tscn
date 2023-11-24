@@ -51,7 +51,7 @@ offset_right = 520.0
 offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("2_k78yu")
 theme_override_font_sizes/font_size = 50
-text = "The Legend Of Developer"
+text = "Neo in the Matrix"
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
