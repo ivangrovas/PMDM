@@ -11,6 +11,8 @@ var direction : Vector2 = Vector2.ZERO
 var has_double_jumped : bool = false
 var animation_locked : bool = false
 
+@onready var sprite : Sprite2D = $Sprite2D
+
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 
@@ -50,7 +52,14 @@ func _physics_process(delta):
 
 	move_and_slide()
 	update_animation()
+	update_facing_direction()
 
+func update_facing_direction():
+	if direction.x > 0:
+		sprite.flip_h = false
+	elif direction.x < 0:
+		sprite.flip_h = true
+		
 func jump():
 	velocity.y = jump_velocity
 	animation_locked = true

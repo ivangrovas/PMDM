@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Zelda In The Matrix"
-run/main_scene="res://Escenas/test_level.tscn"
+run/main_scene="res://Escenas/menu_principal.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
