@@ -18,6 +18,14 @@ var animation_locked : bool = false
 
 func _ready():
 	animation_tree.active = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	set_process_input(true)
+
+func _input(event):
+	if Input.is_action_just_pressed("Pause") and get_tree().paused==false:
+		get_tree().paused=true
+		$PauseMenu.visible=true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 
 func update_animation():
@@ -68,3 +76,15 @@ func double_jump():
 	velocity.y = double_jump_velocity
 	animation_locked = true
 	has_double_jumped = true
+
+
+func _on_resume_pressed():
+	$PauseMenu.visible = false
+	get_tree().paused=false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func _on_exit_pressed():
+	get_tree().quit()
+
+	

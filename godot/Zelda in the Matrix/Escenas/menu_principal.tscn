@@ -51,9 +51,9 @@ text = "Exit"
 
 [node name="Label_title" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 122.0
+offset_left = 132.0
 offset_top = 14.0
-offset_right = 520.0
+offset_right = 530.0
 offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("2_k78yu")
 theme_override_font_sizes/font_size = 50
@@ -240,8 +240,8 @@ text = "Back"
 [connection signal="pressed" from="Control/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Control/BackFromSettingsMenu" to="." method="_on_back_from_settings_menu_pressed"]
 [connection signal="pressed" from="Control/BackFromSettingsMenu" to="." method="_on_back_from_settings_pressed"]
+[connection signal="pressed" from="Control/BackFromSettingsMenu" to="." method="_on_back_from_settings_menu_pressed"]
 [connection signal="pressed" from="Settings/VBoxContainer/Video" to="." method="_on_video_pressed"]
 [connection signal="pressed" from="Settings/VBoxContainer/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="Settings/BackFromSettings" to="." method="_on_back_from_settings_pressed"]
