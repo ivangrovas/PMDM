@@ -1,8 +1,13 @@
 extends Control
 
+@onready var menu = $Control
+@onready var options = $Settings
+@onready var videos = $Video
+@onready var audio = $Audio
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,8 +20,60 @@ func _on_play_pressed():
 
 
 func _on_settings_pressed():
-	pass 
+	show_and_hide(options, menu)
 
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+func show_and_hide(options: Control, control: Control):
+
+		options.show()
+		control.hide()
+
+func _on_video_pressed():
+	show_and_hide(videos, options)
+
+
+func _on_audio_pressed():
+	show_and_hide(audio,options)
+
+
+func _on_back_from_settings_pressed():
+	show_and_hide(menu, options)
+
+
+func _on_full_screen_toggled(button_pressed):
+	if button_pressed == true:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
+func _on_borderless_toggled(button_pressed):
+	if button_pressed == true:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_back_from_video_pressed():
+	show_and_hide(options,videos) # Replace with function body.
+
+
+func _on_master_value_changed(value):
+	volume(0, value)
+
+func volume(bus_index,value):
+	AudioServer.set_bus_volume_db(bus_index, value)
+
+
+func _on_music_value_changed(value):
+	volume(1, value)
+
+
+func _on_back_from_audio_pressed():
+	show_and_hide(options,audio)
+
+
+func _on_back_from_settings_menu_pressed():
+	show_and_hide(menu,options)
