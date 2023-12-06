@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1w1bwehp14uq"]
+[gd_scene load_steps=5 format=3 uid="uid://b1w1bwehp14uq"]
 
 [ext_resource type="Texture2D" uid="uid://beulqko0xc7fq" path="res://Resources/the-legend-of-zelda-breath-of-the-wild-artworks-dl-2222650990.jpg" id="1_ma5c6"]
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_r3kum"]
 [ext_resource type="FontFile" uid="uid://dihl7x3ibdr4r" path="res://Resources/Arthemis.ttf" id="2_k78yu"]
+[ext_resource type="AudioStream" uid="uid://sb0buystsgsi" path="res://Resources/Sonidos/The Legend of Zelda_ Breath of the Wild - Main Menu (With Music Added).mp3" id="4_hxrqb"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -57,7 +58,7 @@ offset_right = 530.0
 offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("2_k78yu")
 theme_override_font_sizes/font_size = 50
-text = "Neo in the Matrix"
+text = "Zelda in the Matrix"
 
 [node name="BackFromSettingsMenu" type="Button" parent="Control"]
 visible = false
@@ -206,10 +207,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Master"
 
-[node name="Music" type="Label" parent="Audio/HBoxContainer/Labels"]
-layout_mode = 2
-text = "Music"
-
 [node name="Slider" type="VBoxContainer" parent="Audio/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -219,9 +216,6 @@ theme_override_constants/separation = 0
 [node name="Master" type="HSlider" parent="Audio/HBoxContainer/Slider"]
 layout_mode = 2
 size_flags_vertical = 4
-
-[node name="Music" type="HSlider" parent="Audio/HBoxContainer/Slider"]
-layout_mode = 2
 
 [node name="BackFromAudio" type="Button" parent="Audio"]
 layout_mode = 1
@@ -237,6 +231,10 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Back"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hxrqb")
+autoplay = true
+
 [connection signal="pressed" from="Control/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
@@ -249,6 +247,5 @@ text = "Back"
 [connection signal="toggled" from="Video/HBoxContainer/Checks/Borderless" to="." method="_on_borderless_toggled"]
 [connection signal="pressed" from="Video/BackFromVideo" to="." method="_on_back_from_video_pressed"]
 [connection signal="value_changed" from="Audio/HBoxContainer/Slider/Master" to="." method="_on_master_value_changed"]
-[connection signal="value_changed" from="Audio/HBoxContainer/Slider/Music" to="." method="_on_music_value_changed"]
 [connection signal="pressed" from="Audio/BackFromAudio" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Audio/BackFromAudio" to="." method="_on_back_from_audio_pressed"]

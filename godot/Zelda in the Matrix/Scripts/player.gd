@@ -5,8 +5,6 @@ const speed = 200.0
 @export var jump_velocity : float = -300.0
 @export var double_jump_velocity : float = -200
 
-
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction : Vector2 = Vector2.ZERO
 var has_double_jumped : bool = false
@@ -71,11 +69,13 @@ func update_facing_direction():
 func jump():
 	velocity.y = jump_velocity
 	animation_locked = true
+	$salto.playing = true
 
 func double_jump():
 	velocity.y = double_jump_velocity
 	animation_locked = true
 	has_double_jumped = true
+	$salto.playing = true
 
 func _on_resume_pressed():
 	$PauseMenu.visible = false

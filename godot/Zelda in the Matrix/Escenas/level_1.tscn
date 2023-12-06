@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd2iwvgcq16ay"]
+[gd_scene load_steps=8 format=3 uid="uid://dd2iwvgcq16ay"]
 
 [ext_resource type="Texture2D" uid="uid://dvr2ys1t6uo2b" path="res://Resources/Assets/Tiles.png" id="1_gogsv"]
 [ext_resource type="PackedScene" uid="uid://el2k07yotm6w" path="res://Escenas/player.tscn" id="2_jeydd"]
 [ext_resource type="Texture2D" uid="uid://cg2prdgpy2a2i" path="res://Resources/level1.jpg" id="3_2l20d"]
+[ext_resource type="AudioStream" uid="uid://dnpibylxqxrti" path="res://Resources/Sonidos/pixel-song-19-31953_junta.mp3" id="4_bnpbl"]
+[ext_resource type="Script" path="res://Scripts/audio_fondo1.gd" id="5_xh35c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p5m3q"]
 texture = ExtResource("1_gogsv")
@@ -1453,3 +1455,10 @@ drag_vertical_enabled = true
 position = Vector2(6.86646e-05, 0.50001)
 scale = Vector2(0.898438, 0.898611)
 texture = ExtResource("3_2l20d")
+
+[node name="audio_fondo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_bnpbl")
+autoplay = true
+script = ExtResource("5_xh35c")
+
+[connection signal="finished" from="audio_fondo" to="audio_fondo" method="_on_finished"]

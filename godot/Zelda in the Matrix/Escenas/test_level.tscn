@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://db84nhoqk4w4f"]
+[gd_scene load_steps=10 format=3 uid="uid://db84nhoqk4w4f"]
 
 [ext_resource type="Texture2D" uid="uid://dvr2ys1t6uo2b" path="res://Resources/Assets/Tiles.png" id="1_k3ks3"]
 [ext_resource type="PackedScene" uid="uid://el2k07yotm6w" path="res://Escenas/player.tscn" id="2_6yduh"]
 [ext_resource type="Texture2D" uid="uid://d1p8y6rwh5du6" path="res://Resources/background.jpg" id="3_s0ceh"]
 [ext_resource type="Script" path="res://Scripts/Area2D(Portal de escenas).gd" id="4_rlm8x"]
+[ext_resource type="AudioStream" uid="uid://bgjwe3gckg6sg" path="res://Resources/Sonidos/ringtones-tema-zelda.mp3" id="5_rig8q"]
+[ext_resource type="Script" path="res://Scripts/audio_fondo1.gd" id="6_j1l81"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4q1r8"]
 texture = ExtResource("1_k3ks3")
@@ -1462,5 +1464,11 @@ script = ExtResource("4_rlm8x")
 position = Vector2(45, 500)
 shape = SubResource("RectangleShape2D_o473y")
 
+[node name="audio_fondo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rig8q")
+autoplay = true
+script = ExtResource("6_j1l81")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="finished" from="audio_fondo" to="audio_fondo" method="_on_finished"]
