@@ -6,13 +6,13 @@ const speed = 200.0
 @export var double_jump_velocity : float = -200
 
 
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction : Vector2 = Vector2.ZERO
 var has_double_jumped : bool = false
 var animation_locked : bool = false
 
 @onready var sprite : Sprite2D = $Sprite2D
-
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 
@@ -76,7 +76,6 @@ func double_jump():
 	velocity.y = double_jump_velocity
 	animation_locked = true
 	has_double_jumped = true
-
 
 func _on_resume_pressed():
 	$PauseMenu.visible = false
