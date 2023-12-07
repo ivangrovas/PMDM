@@ -5,11 +5,11 @@ extends Control
 @onready var videos = $Video
 @onready var audio = $Audio
 
+var user_prefs: UserPreferences
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-
-
+	user_prefs = UserPreferences.load_or_create()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -46,8 +46,10 @@ func _on_back_from_settings_pressed():
 func _on_full_screen_toggled(button_pressed):
 	if button_pressed == true:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		user_prefs.save()
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		user_prefs.save()
 	
 func _on_borderless_toggled(button_pressed):
 	if button_pressed == true:
@@ -65,6 +67,7 @@ func _on_master_value_changed(value):
 
 func volume(bus_index,value):
 	AudioServer.set_bus_volume_db(bus_index, value)
+	user_prefs.save()
 
 
 func _on_music_value_changed(value):

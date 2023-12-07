@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://db84nhoqk4w4f"]
+[gd_scene load_steps=23 format=3 uid="uid://db84nhoqk4w4f"]
 
 [ext_resource type="Texture2D" uid="uid://dvr2ys1t6uo2b" path="res://Resources/Assets/Tiles.png" id="1_k3ks3"]
 [ext_resource type="PackedScene" uid="uid://el2k07yotm6w" path="res://Escenas/player.tscn" id="2_6yduh"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/Area2D(Portal de escenas).gd" id="4_rlm8x"]
 [ext_resource type="AudioStream" uid="uid://bgjwe3gckg6sg" path="res://Resources/Sonidos/ringtones-tema-zelda.mp3" id="5_rig8q"]
 [ext_resource type="Script" path="res://Scripts/audio_fondo1.gd" id="6_j1l81"]
+[ext_resource type="PackedScene" uid="uid://bi3waggwlqi3n" path="res://Escenas/enemy_1.tscn" id="7_typwd"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="8_yrss7"]
+[ext_resource type="Texture2D" uid="uid://b1exwgint5q8e" path="res://Resources/Assets/all.png" id="9_dvmip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4q1r8"]
 texture = ExtResource("1_k3ks3")
@@ -1429,6 +1432,73 @@ sources/0 = SubResource("TileSetAtlasSource_4q1r8")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o473y"]
 size = Vector2(1711.75, 454)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex5rn"]
+atlas = ExtResource("9_dvmip")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_equxd"]
+atlas = ExtResource("9_dvmip")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btrv3"]
+atlas = ExtResource("9_dvmip")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fryva"]
+atlas = ExtResource("9_dvmip")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkm65"]
+atlas = ExtResource("9_dvmip")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oolob"]
+atlas = ExtResource("9_dvmip")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_subpa"]
+atlas = ExtResource("9_dvmip")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym4bo"]
+atlas = ExtResource("9_dvmip")
+region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rbc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex5rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_equxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btrv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fryva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkm65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oolob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_subpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym4bo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrwbw"]
+radius = 15.0
+
 [node name="DemoLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1468,6 +1538,18 @@ shape = SubResource("RectangleShape2D_o473y")
 stream = ExtResource("5_rig8q")
 autoplay = true
 script = ExtResource("6_j1l81")
+
+[node name="enemy1" parent="." instance=ExtResource("7_typwd")]
+script = ExtResource("8_yrss7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy1"]
+position = Vector2(257, 196)
+sprite_frames = SubResource("SpriteFrames_1rbc5")
+frame_progress = 0.938109
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy1"]
+position = Vector2(257, 196)
+shape = SubResource("CapsuleShape2D_xrwbw")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

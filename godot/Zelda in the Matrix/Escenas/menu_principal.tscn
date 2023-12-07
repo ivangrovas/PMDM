@@ -156,9 +156,11 @@ text = "Borderless"
 layout_mode = 2
 
 [node name="FullScreen" type="CheckBox" parent="Video/HBoxContainer/Checks"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Borderless" type="CheckBox" parent="Video/HBoxContainer/Checks"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="BackFromVideo" type="Button" parent="Video"]
@@ -214,6 +216,7 @@ size_flags_vertical = 4
 theme_override_constants/separation = 0
 
 [node name="Master" type="HSlider" parent="Audio/HBoxContainer/Slider"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 
@@ -238,8 +241,8 @@ autoplay = true
 [connection signal="pressed" from="Control/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Control/BackFromSettingsMenu" to="." method="_on_back_from_settings_menu_pressed"]
 [connection signal="pressed" from="Control/BackFromSettingsMenu" to="." method="_on_back_from_settings_pressed"]
+[connection signal="pressed" from="Control/BackFromSettingsMenu" to="." method="_on_back_from_settings_menu_pressed"]
 [connection signal="pressed" from="Settings/VBoxContainer/Video" to="." method="_on_video_pressed"]
 [connection signal="pressed" from="Settings/VBoxContainer/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="Settings/BackFromSettings" to="." method="_on_back_from_settings_pressed"]

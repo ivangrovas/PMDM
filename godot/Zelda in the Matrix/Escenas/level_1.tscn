@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dd2iwvgcq16ay"]
+[gd_scene load_steps=21 format=3 uid="uid://dd2iwvgcq16ay"]
 
 [ext_resource type="Texture2D" uid="uid://dvr2ys1t6uo2b" path="res://Resources/Assets/Tiles.png" id="1_gogsv"]
 [ext_resource type="PackedScene" uid="uid://el2k07yotm6w" path="res://Escenas/player.tscn" id="2_jeydd"]
 [ext_resource type="Texture2D" uid="uid://cg2prdgpy2a2i" path="res://Resources/level1.jpg" id="3_2l20d"]
 [ext_resource type="AudioStream" uid="uid://dnpibylxqxrti" path="res://Resources/Sonidos/pixel-song-19-31953_junta.mp3" id="4_bnpbl"]
 [ext_resource type="Script" path="res://Scripts/audio_fondo1.gd" id="5_xh35c"]
+[ext_resource type="PackedScene" uid="uid://bi3waggwlqi3n" path="res://Escenas/enemy_1.tscn" id="6_h6xl3"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="7_54f50"]
+[ext_resource type="Texture2D" uid="uid://b1exwgint5q8e" path="res://Resources/Assets/all.png" id="8_1fkjv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p5m3q"]
 texture = ExtResource("1_gogsv")
@@ -1430,6 +1433,73 @@ texture = ExtResource("1_gogsv")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_p5m3q")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex5rn"]
+atlas = ExtResource("8_1fkjv")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_equxd"]
+atlas = ExtResource("8_1fkjv")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btrv3"]
+atlas = ExtResource("8_1fkjv")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fryva"]
+atlas = ExtResource("8_1fkjv")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkm65"]
+atlas = ExtResource("8_1fkjv")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oolob"]
+atlas = ExtResource("8_1fkjv")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_subpa"]
+atlas = ExtResource("8_1fkjv")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym4bo"]
+atlas = ExtResource("8_1fkjv")
+region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eux1f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex5rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_equxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btrv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fryva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkm65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oolob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_subpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym4bo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b5blo"]
+radius = 15.0
+
 [node name="level_1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1460,5 +1530,16 @@ texture = ExtResource("3_2l20d")
 stream = ExtResource("4_bnpbl")
 autoplay = true
 script = ExtResource("5_xh35c")
+
+[node name="enemy1" parent="." instance=ExtResource("6_h6xl3")]
+script = ExtResource("7_54f50")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy1"]
+position = Vector2(257, 196)
+sprite_frames = SubResource("SpriteFrames_eux1f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy1"]
+position = Vector2(257, 196)
+shape = SubResource("CapsuleShape2D_b5blo")
 
 [connection signal="finished" from="audio_fondo" to="audio_fondo" method="_on_finished"]
