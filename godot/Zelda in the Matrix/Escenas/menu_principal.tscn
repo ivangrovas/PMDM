@@ -250,5 +250,5 @@ autoplay = true
 [connection signal="toggled" from="Video/HBoxContainer/Checks/Borderless" to="." method="_on_borderless_toggled"]
 [connection signal="pressed" from="Video/BackFromVideo" to="." method="_on_back_from_video_pressed"]
 [connection signal="value_changed" from="Audio/HBoxContainer/Slider/Master" to="." method="_on_master_value_changed"]
-[connection signal="pressed" from="Audio/BackFromAudio" to="." method="_on_back_from_audio_pressed"]
 [connection signal="pressed" from="Audio/BackFromAudio" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Audio/BackFromAudio" to="." method="_on_back_from_audio_pressed"]
