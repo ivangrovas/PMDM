@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cu2p3bsdxsky0"
+path="res://.godot/imported/mario-bros tuberia.mp3-432fedab27c834d54c07cb763af1f956.mp3str"
+
+[deps]
+
+source_file="res://Resources/Sonidos/mario-bros tuberia.mp3"
+dest_files=["res://.godot/imported/mario-bros tuberia.mp3-432fedab27c834d54c07cb763af1f956.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -4,6 +4,9 @@
 [ext_resource type="Script" path="res://Scripts/coin.gd" id="1_y6oq8"]
 [ext_resource type="AudioStream" uid="uid://d1aemktfjwskg" path="res://Resources/Sonidos/short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="3_fkx0v"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ufine"]
+radius = 20.0998
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xf1i"]
 atlas = ExtResource("1_tb14t")
 region = Rect2(0, 0, 120, 120)
@@ -68,22 +71,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ufine"]
-radius = 20.0998
-
 [node name="Coin" type="Area2D"]
 script = ExtResource("1_y6oq8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ufine")
+
+[node name="coinSong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fkx0v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 2)
 scale = Vector2(0.35, 0.341667)
 sprite_frames = SubResource("SpriteFrames_hp40c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ufine")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_fkx0v")
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

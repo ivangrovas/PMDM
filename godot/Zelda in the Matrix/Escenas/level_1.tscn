@@ -1566,6 +1566,9 @@ position = Vector2(-379, 98)
 [node name="Coin7" parent="." instance=ExtResource("9_qn3b0")]
 position = Vector2(-2.99997, 33)
 
+[node name="Coin9" parent="." instance=ExtResource("9_qn3b0")]
+position = Vector2(503, -231)
+
 [node name="Coin6" parent="." instance=ExtResource("9_qn3b0")]
 position = Vector2(403, -78)
 
@@ -1576,11 +1579,21 @@ position = Vector2(148.717, -15.9269)
 position = Vector2(280, -46)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -553.0
-offset_top = -290.0
-offset_right = -202.0
-offset_bottom = 48.0
-text = "Recoge todas las monedas que puedas"
-horizontal_alignment = 1
+offset_left = -545.0
+offset_top = -295.0
+offset_right = -77.0
+offset_bottom = -9.0
+text = "Recoge todas las monedas que puedas.
+Sirvete de la atracción del caracol por ti 
+para usarlo de base y llegar a las plataformas"
+
+[node name="Coin11" parent="." instance=ExtResource("9_qn3b0")]
+position = Vector2(335.033, -228.941)
+
+[node name="Coin10" parent="." instance=ExtResource("9_qn3b0")]
+position = Vector2(210.581, -230.623)
+
+[node name="Coin12" parent="." instance=ExtResource("9_qn3b0")]
+position = Vector2(84, -227)
 
 [connection signal="finished" from="audio_fondo" to="audio_fondo" method="_on_finished"]
